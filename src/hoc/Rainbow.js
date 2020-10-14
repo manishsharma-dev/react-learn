@@ -6,7 +6,7 @@ const Rainbow = (WrappedComponent) => {
     const randomColour = colours[Math.floor(Math.random() * 5)];
     const className = randomColour + '-text';
 
-    return (props) => {
+    return (props) =>  {
         return(
             <div className={className}>
                 <WrappedComponent {...props} />

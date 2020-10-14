@@ -10,10 +10,10 @@ export class App extends PureComponent {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route path="/About" component={About} />
-          <Route path="/Contact" component={Contact} />
+          <Navbar />          
+          <Route path='/about' component={About} />
+          <Route path='/contact' component={Contact} />
+          <Route exact path='/' component={Home}/>
         </div>
       </BrowserRouter>
     )

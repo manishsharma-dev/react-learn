@@ -1,14 +1,40 @@
-import React from 'react'
-
-const Home = () => {
-    return (
-    <div className="container">
-        <h4 className="center">Home</h4>
-        <p>
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-        </p>
-    </div>
-    )
+import React, { Component } from 'react';
+import axios from 'axios';
+class Home extends Component {
+    state = {
+        posts: [ ]
+    }
+    componentDidMount() {
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(res => {
+                this.setState({
+                    posts: res.data.slice(0,20)
+                })
+            })
+    }
+    render() {
+        const {posts} = this.state;
+        const postList = posts.length ? (
+            posts.map(post => {
+                return (
+                  <div className="post card" key={post.id}>
+                    <div className="card-content">
+                      <span className="card-title">{post.title}</span>
+                      <p>{post.body}</p>
+                    </div>
+                  </div>
+                )
+              })
+            ) : (
+              <div className="center">No posts to show</div>
+            );
+        return (
+            <div className="container">
+                <h4 className="center">Home</h4>
+                {postList}
+            </div>
+        )
+    }
 }
 
 export default Home
