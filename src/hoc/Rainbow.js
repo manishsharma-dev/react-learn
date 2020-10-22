@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Rainbow = (WrappedComponent) => {
-    const colours = ['red', 'pink', 'orange', 'blue', 'green', 'yellow'];
+    const colours = ['red', 'pink', 'orange', 'blue', 'green', 'yellow','indigo'];
     const randomColour = colours[Math.floor(Math.random() * 5)];
     const className = randomColour + '-text';
 
